@@ -30,6 +30,7 @@ async def on_member_join(member):
 async def on_ready():
     await bot.change_presence(status=discord.Status.online)
     changeStatus.start()
+    print ("Bot is ready")
 
 
 @bot.command()
