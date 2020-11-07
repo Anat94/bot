@@ -204,11 +204,15 @@ async def help(ctx):
     await ctx.send(embed=embed)
     embed1 = discord.Embed(
         title=f"Descriptifs des commandes musicales",
-        description = f"b",
+        description = f"play -> jouer une vidéo\npause -> mettre une musique en pause\nresume -> reprendre la musique\nleave -> le bot quitte le vocal\n\skip ->passage a la chanson suivante ",
 	color = 0x00FF00
     )
     await ctx.send(embed=embed1)
-
+#!skip
+#!pause
+#!resume
+#!leave
+#!play
 	
 
 #------------------------------------------------------------------------------------ERREURE-----------------------------------------------------------------------------------------------
@@ -322,18 +326,6 @@ async def play(ctx, url):
 
 bot.run(TOKEN)
 
-#banId
-#!send_mp
-#!ban
-#!unban
-#!kick
-#!clear
-#!mute
-#!unmute
-#!serveur_info
 
-#!skip
-#!pause
-#!resume
-#!leave
-#!play
+
+
