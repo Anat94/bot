@@ -50,7 +50,7 @@ async def clear(ctx, nb=20):
 
     embed = discord.Embed(
         title=f'{nb} messages ont été supprimés',
-        colour=discord.Colour.green()
+        colour=discord.Colour.yellow()
     )
     await ctx.send(embed=embed)
 
@@ -60,13 +60,13 @@ async def clear(ctx, nb=20):
 async def kick(ctx, member: discord.Member, *reason):
     embed = discord.Embed(
         title=f"{member.name} a été expulsé par {ctx.message.author.name} : {' '.join(i for i in reason) if reason else 'aucune raison spécifiée'}",
-        colour=discord.Colour.green()
+        colour=discord.Colour.red()
     )
     await ctx.send(embed=embed)
 
     embed = discord.Embed(
         title=f"Vous avez été expulsé par {ctx.message.author.name} : {' '.join(i for i in reason) if reason else 'aucune raison spécifiée'}",
-        colour=discord.Colour.green()
+        colour=discord.Colour.red()
     )
 
     await member.send(embed=embed)
@@ -79,13 +79,13 @@ async def kick(ctx, member: discord.Member, *reason):
 async def ban(ctx, member: discord.Member, *reason):
     embed = discord.Embed(
         title=f"{member.name} a été banni par {ctx.message.author.name} : {' '.join(i for i in reason) if reason else 'aucune raison spécifiée'}",
-        colour=discord.Colour.green()
+        colour=discord.Colour.red()
     )
     await ctx.send(embed=embed)
 
     embed = discord.Embed(
         title=f"Vous avez été banni par {ctx.message.author.name} : {' '.join(i for i in reason) if reason else 'aucune raison spécifiée'}",
-        colour=discord.Colour.green()
+        colour=discord.Colour.red()
     )
 
     await member.send(embed=embed)
@@ -221,7 +221,7 @@ async def help(ctx):
 async def on_message_delete(message):
     embed = discord.Embed(
         title=f"Le message de {message.author} a été supprimé \n> {message.content}",
-        coulor=discord.Colour.green()
+        coulor=discord.Colour.blue()
     )
     await bot.get_channel(LOG).send(embed=embed)
     
@@ -229,7 +229,7 @@ async def on_message_delete(message):
 async def on_message_edit(before, after):
     embed = discord.Embed(
         title=f"{before.author} a édité son message :\nAvant -> {before.content}\nAprès -> {after.content}",
-        colour=discord.Colour.green()
+        colour=discord.Colour.blue()
     )
     
 @bot.event
