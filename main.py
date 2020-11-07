@@ -199,13 +199,13 @@ async def help(ctx):
     embed = discord.Embed(
         title=f"Descriptifs des commandes",
         description = f"ban -> bannir une personne \nunban -> débannir une personne\nbanId -> pour voir la liste des ban\nkick -> kick une personne,\nmute -> mute une personne\nunmute -> démute une personne\nclear x -> pour supprimer x messages\nserveur_info -> avoir toutes les infos sur le serveur\n send_mp-> envoyer un message a tous les membres du serveur",	    colour=discord.Colour.green()
-    	colour=discord.Colour.green()
+    	color=discord.Colour.green()
     )
     await ctx.send(embed=embed)
     embed1 = discord.Embed(
         title=f"Descriptifs des commandes musicales",
         description = f"",	    
-        colour=discord.Colour.green()
+        color=discord.Colour.green()
     )
     await ctx.send(embed1=embed1)
 
@@ -218,7 +218,7 @@ async def help(ctx):
 async def on_message_delete(message):
     embed = discord.Embed(
         title=f"Le message de {message.author} a été supprimé \n> {message.content}",
-        color=discord.Colour.green()
+        coulor=discord.Colour.green()
     )
     await bot.get_channel(LOG).send(embed=embed)
     
@@ -226,7 +226,7 @@ async def on_message_delete(message):
 async def on_message_edit(before, after):
     embed = discord.Embed(
         title=f"{before.author} a édité son message :\nAvant -> {before.content}\nAprès -> {after.content}",
-        color=discord.Colour.green()
+        colour=discord.Colour.green()
     )
     
 @bot.event
