@@ -156,10 +156,8 @@ async def serveur_info(ctx):
 	serverName = server.name
 	message = f"Le serveur **{serverName}** contient *{numberOfPerson}* personnes ! \nLa description du serveur est {serverDescription}. \nCe serveur possède {numberOfTextChannels} salons écrit et {numberOfVoiceChannels} salon vocaux."
 	await ctx.send(message)
-@commands.has_role(ROLE_PERM)	
-@bot.command()
-async def say(ctx, *texte):
-	await ctx.send(" ".join(texte)) #await ctx.message.delete() pour supprimer
+	
+#await ctx.message.delete() pour supprimer
 
 @commands.has_role(ROLE_PERM)
 @bot.command()
