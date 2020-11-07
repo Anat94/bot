@@ -4,7 +4,6 @@ import asyncio
 import youtube_dl
 import random
 import os
-import json
 
 TOKEN = os.environ["TOKEN"]
 PREFIX = '!'
