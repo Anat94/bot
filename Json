@@ -1,4 +1,4 @@
 {
-    'guild_id1' : channel_id1,
-    'guild_id2' : channel_id2
+    'guild_id1' : channel_BIENVENUE_ID1 : channel_LOG_ID1 : ROLE_PERM_1 ,
+    'guild_id2' : channel_BIENVENUE_ID2 : channel_LOG_ID2 : ROLE_PERM_2 ,
 } 
