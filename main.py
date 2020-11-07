@@ -198,15 +198,14 @@ async def Tirage_au_sort(ctx):
 async def help(ctx):
     embed = discord.Embed(
         title=f"Descriptifs des commandes",
-	colour=discord.Colour.green(),
-        description = f"ban -> bannir une personne \nunban -> débannir une personne\nbanId -> pour voir la liste des ban\nkick -> kick une personne,\nmute -> mute une personne\nunmute -> démute une personne\nclear x -> pour supprimer x messages\nserveur_info -> avoir toutes les infos sur le serveur\n send_mp-> envoyer un message a tous les membres du serveur"
-
+	description = f"ban -> bannir une personne \nunban -> débannir une personne\nbanId -> pour voir la liste des ban\nkick -> kick une personne,\nmute -> mute une personne\nunmute -> démute une personne\nclear x -> pour supprimer x messages\nserveur_info -> avoir toutes les infos sur le serveur\n send_mp-> envoyer un message a tous les membres du serveur",
+	colour = 008000
     )
     await ctx.send(embed=embed)
     embed1 = discord.Embed(
         title=f"Descriptifs des commandes musicales",
-	colour=discord.Colour.green(),
-        description = f"b"	    
+        description = f"b",
+	color = 008000
     )
     await ctx.send(embed1=embed1)
 
