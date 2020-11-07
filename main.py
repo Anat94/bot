@@ -3,8 +3,9 @@ from discord.ext import commands, tasks
 import asyncio
 import youtube_dl
 import random
+import os
 
-TOKEN = 'NzczNjQ2NDE0Mzc4MzAzNTY5.X6MQXg.09esvsVv0oJ1UAGiTErHu_kh87E'
+TOKEN = os.environ["TOKEN"]
 PREFIX = '!'
 MESSAGE = 'Message à mettre ✅ 💯 🇨🇵 😉 😱 😍 ❌ 😜 🍀 :weary: :white_check_mark:'  # dans l'ordre :white_check_mark: :100:  :flag_mf:  :wink::scream::heart_eyes::x::stuck_out_tongue_winking_eye::four_leaf_clover:
 ROLE_PERM = 'bot'
