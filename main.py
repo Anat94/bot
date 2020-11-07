@@ -197,7 +197,7 @@ async def Tirage_au_sort(ctx):
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(
-        title=f"ban -> bannir une personne \nunban -> débannir une personne\nbanId -> pour voir la liste des ban\nkick -> kick une personne",
+        title=f"ban -> bannir une personne \nunban -> débannir une personne\nbanId -> pour voir la liste des ban\nkick -> kick une personne,\nmute -> mute une personne\nunmute -> démute une personne\nclear x -> pour supprimer x messages\nserveur_info -> avoir toutes les infos sur le serveur\n send_mp-> envoyer un message a tous les membres",
         colour=discord.Colour.green()
     )
     await ctx.send(embed=embed)
