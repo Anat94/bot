@@ -218,7 +218,7 @@ async def help(ctx):
 async def on_message_delete(message):
     embed = discord.Embed(
         title=f"Le message de {message.author} a été supprimé \n> {message.content}",
-        colour=discord.Colour.green()
+        color=discord.Colour.green()
     )
     await bot.get_channel(LOG).send(embed=embed)
     
@@ -226,7 +226,7 @@ async def on_message_delete(message):
 async def on_message_edit(before, after):
     embed = discord.Embed(
         title=f"{before.author} a édité son message :\nAvant -> {before.content}\nAprès -> {after.content}",
-        colour=discord.Colour.green()
+        color=discord.Colour.green()
     )
     
 @bot.event
