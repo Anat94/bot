@@ -207,7 +207,7 @@ async def help(ctx):
         description = f"b",
 	color = 0x00FF00
     )
-    await ctx.send(embed1=embed1)
+    await ctx.send(embed=embed1)
 
 	
 
