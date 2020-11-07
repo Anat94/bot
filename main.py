@@ -7,7 +7,7 @@ import os
 
 TOKEN = os.environ["TOKEN"]
 PREFIX = '!'
-MESSAGE = 'Message à mettre ✅ 💯 🇨🇵 😉 😱 😍 ❌ 😜 🍀 :weary: :white_check_mark:'  # dans l'ordre :white_check_mark: :100:  :flag_mf:  :wink::scream::heart_eyes::x::stuck_out_tongue_winking_eye::four_leaf_clover:
+MESSAGE = 'Message à mettre ✅ 💯 🇨🇵 😉 😱 😍 ❌ 😜 🍀 '  # dans l'ordre :white_check_mark: :100:  :flag_mf:  :wink::scream::heart_eyes::x::stuck_out_tongue_winking_eye::four_leaf_clover:
 ROLE_PERM = 'bot'
 CHANNEL_BIENVENUE = 774282501660082217
 LOG = 729993974709878844
