@@ -193,26 +193,26 @@ async def Tirage_au_sort(ctx):
 	await ctx.send(f"La personne qui a gagnée une {price} est...")
 	await asyncio.sleep(1)
 	await ctx.send("**" + winner.name + "**" + " !")
+	
+@bot.command()
+async def say(ctx, number, *texte):
+	for i in range(int(number)):
+		await ctx.send(" ".join(texte))
 
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(
         title=f"Descriptifs des commandes",
-	description = f"ban -> bannir une personne \nunban -> débannir une personne\nbanId -> pour voir la liste des ban\nkick -> kick une personne,\nmute -> mute une personne\nunmute -> démute une personne\nclear x -> pour supprimer x messages\nserveur_info -> avoir toutes les infos sur le serveur\n send_mp-> envoyer un message a tous les membres du serveur",
+	description = f"ban -> bannir une personne \nunban -> débannir une personne\nbanId -> pour voir la liste des ban\nkick -> kick une personne,\nmute -> mute une personne\nunmute -> démute une personne\nclear x -> pour supprimer x messages\nserveur_info -> avoir toutes les infos sur le serveur\nsay x -> pour envoyer x fois une phrase\nsend_mp-> envoyer un message a tous les membres du serveur",
 	colour = 0x00FF00
     )
     await ctx.send(embed=embed)
     embed1 = discord.Embed(
         title=f"Descriptifs des commandes musicales",
-        description = f"play -> jouer une vidéo\npause -> mettre une musique en pause\nresume -> reprendre la musique\nleave -> le bot quitte le vocal\n\skip ->passage a la chanson suivante ",
+        description = f"play -> jouer une vidéo\npause -> mettre une musique en pause\nresume -> reprendre la musique\nleave -> le bot quitte le vocal\nskip ->passage a la chanson suivante ",
 	color = 0x00FF00
     )
     await ctx.send(embed=embed1)
-#!skip
-#!pause
-#!resume
-#!leave
-#!play
 	
 
 #------------------------------------------------------------------------------------ERREURE-----------------------------------------------------------------------------------------------
