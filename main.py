@@ -145,7 +145,7 @@ async def unmute(ctx, member : discord.Member, *, reason = "Aucune raison n'a é
     mutedRole = await getMutedRole(ctx)
     await member.remove_roles(mutedRole, reason = reason)
     await ctx.send(f"{member.mention} a été unmute !")
-@commands.has_role(ROLE_PERM)
+
 @bot.command()
 async def serveur_info(ctx):
 	server = ctx.guild
@@ -192,6 +192,7 @@ async def Tirage_au_sort(ctx):
 	await asyncio.sleep(1)
 	await ctx.send("**" + winner.name + "**" + " !")
 	
+@commands.has_role(ROLE_PERM)  	
 @bot.command()
 async def say(ctx, number, *texte):
 	for i in range(int(number)):
