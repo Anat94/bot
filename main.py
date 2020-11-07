@@ -201,6 +201,12 @@ async def help(ctx):
         colour=discord.Colour.green()
     )
     await ctx.send(embed=embed)
+   embed = discord.Embed(
+        title=f"clear x -> pour supprimer x messages\nserveur_info -> avoir toutes les infos sur le serveur\n send_mp-> envoyer un message a tous les membres du serveur",
+        colour=discord.Colour.green()
+    )
+    await ctx.send(embed=embed)
+	
 
 #------------------------------------------------------------------------------------ERREURE-----------------------------------------------------------------------------------------------
 
