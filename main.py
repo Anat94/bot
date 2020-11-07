@@ -8,9 +8,9 @@ import os
 TOKEN = os.environ["TOKEN"]
 PREFIX = '!'
 MESSAGE = 'Message à mettre ✅ 💯 🇨🇵 😉 😱 😍 ❌ 😜 🍀 '  # dans l'ordre :white_check_mark: :100:  :flag_mf:  :wink::scream::heart_eyes::x::stuck_out_tongue_winking_eye::four_leaf_clover:
-ROLE_PERM = 'bot'
-CHANNEL_BIENVENUE = 774282501660082217
-LOG = 729993974709878844
+ROLE_PERM = 'Modo D'
+CHANNEL_BIENVENUE = 772547033897762837
+LOG = 774627166456512524
 
 intents = discord.Intents.default()
 intents.members = True
