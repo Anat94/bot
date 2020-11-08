@@ -1,8 +1,5 @@
 {
-    'guild_id1' : channel_BIENVENUE_ID1 ,
-    'guild_id2' : channel_BIENVENUE_ID2,
-    'guild_id1' : channel_LOG_ID1  ,
-    'guild_id2' : channel_LOG_ID2 ,
-    'guild_id1' : ROLE_PERM_1,
-    'guild_id2' : ROLE_PERM_2 ,
+    "771941455651667979" : {"channel_BIENVENUE_ID1": "772547033897762837" , "channel_LOG_ID1" : "774627166456512524"  , "ROLE_PERM_1":"Modo D"}
+    "774729301727772703" : {"channel_BIENVENUE_ID2": "774729301727772706" , "channel_LOG_ID2" : "774928943979167794"  , "ROLE_PERM_2":"Fondateur"}
+
 }
