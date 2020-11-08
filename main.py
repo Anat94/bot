@@ -6,6 +6,9 @@ import random
 import os
 import json
 
+with open('data.json') as read_file:
+	datas = json.load(read_file)
+
 TOKEN = os.environ["TOKEN"]
 PREFIX = '!'
 MESSAGE = 'Message à mettre ✅ 💯 🇨🇵 😉 😱 😍 ❌ 😜 🍀 '  # dans l'ordre :white_check_mark: :100:  :flag_mf:  :wink::scream::heart_eyes::x::stuck_out_tongue_winking_eye::four_leaf_clover:
