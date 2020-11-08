@@ -16,6 +16,11 @@ intents = discord.Intents.default()
 intents.members = True
 bot = commands.Bot(command_prefix= PREFIX, intents=intents, help_command=None)
 
+@bot.event
+async def on_ready():
+    await bot.change_presence(status=discord.Status.online)
+    changeStatus.start()
+    print ("Bot is ready")
 
 @bot.event
 async def on_member_join(member):
@@ -26,11 +31,7 @@ async def on_member_join(member):
     await bot.get_channel(CHANNEL_BIENVENUE).send(embed=embed)
 
 
-@bot.event
-async def on_ready():
-    await bot.change_presence(status=discord.Status.online)
-    changeStatus.start()
-    print ("Bot is ready")
+
 
 
 @bot.command()
