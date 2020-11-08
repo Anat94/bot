@@ -231,9 +231,9 @@ async def on_command_error(ctx, error):
 	elif isinstance(error, commands.MissingPermissions):
 		await ctx.send("Vous n'avez pas les permissions pour faire cette commande.")
 	elif isinstance(error, commands.CheckFailure):
-		await ctx.send("Oups vous ne pouvez iutilisez cette commande.")
+		await ctx.send("Vous ne pouvez utilisez cette commande.")
 	if isinstance(error.original, discord.Forbidden):
-		await ctx.send("Oups, je n'ai pas les permissions nécéssaires pour faire cette commmande")
+		await ctx.send("Je n'ai pas les permissions nécéssaires pour faire cette commmande")
 
 
 #------------------------------------------------------------------------------------LOG-----------------------------------------------------------------------------------------------
