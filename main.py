@@ -222,6 +222,12 @@ async def help(ctx):
 	color = 0x00FF00
     )
     await ctx.send(embed=embed1)
+embed2 = discord.Embed(
+        title=f"Notre discord",
+        description = f"Rejoins notre discord: \nhttps://discord.gg/grVwEhBJYd",
+	color = 0x00FF00
+    )
+    await ctx.send(embed=embed1)
 	
 
 #------------------------------------------------------------------------------------ERREURE-----------------------------------------------------------------------------------------------
