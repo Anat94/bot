@@ -227,7 +227,7 @@ embed2 = discord.Embed(
         description = f"Rejoins notre discord: \nhttps://discord.gg/grVwEhBJYd",
 	color = 0x00FF00
     )
-    await ctx.send(embed=embed1)
+    await ctx.send(embed=embed2)
 	
 
 #------------------------------------------------------------------------------------ERREURE-----------------------------------------------------------------------------------------------
