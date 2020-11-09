@@ -45,7 +45,7 @@ async def send_mp(ctx):
         if not member.bot and member.id != 433547967140462592:
             await member.send(MESSAGE)
 
-
+"""
 @commands.has_role(ROLE_PERM)
 @bot.command()
 async def clear(ctx, nb=20):
@@ -58,7 +58,12 @@ async def clear(ctx, nb=20):
         colour=discord.Colour.yellow()
     )
     await ctx.send(embed=embed)
-
+"""
+@bot.command()
+async def clear(ctx, nombre : int):
+	messages = await ctx.channel.history(limit = nombre + 1).flatten()
+	for message in messages:
+		await message.delete()
 
 @commands.has_role(ROLE_PERM)
 @bot.command()
