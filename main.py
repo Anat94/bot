@@ -6,8 +6,10 @@ import random
 import os
 import json
 
+
+data = {}
 with open('data.json') as read_file:
-	datas = json.load(read_file)
+	data = json.load(read_file)
 
 TOKEN = os.environ["TOKEN"]
 PREFIX = '!'
@@ -32,7 +34,8 @@ async def on_member_join(member):
         title=f'{member.name} a rejoint le serveur !',
         colour=discord.Colour.green()
     )
-    await bot.get_channel(CHANNEL_BIENVENUE).send(embed=embed)
+    channel_bvn = int(data[str(member.guild.id)]["channel_BIENVENUE_ID"])
+    await bot.get_channel(channel_bnv).send(embed=embed)
 
 
 
@@ -355,7 +358,3 @@ async def play(ctx, url):
 
 
 bot.run(TOKEN)
-
-
-
-
