@@ -16,9 +16,6 @@ ROLE_PERM = 'Modo D'
 CHANNEL_BIENVENUE = 772547033897762837
 LOG = 774627166456512524
 
-intents = discord.Intents.default()
-intents.members = True
-bot = commands.Bot(command_prefix= PREFIX, intents=intents, help_command=None)
 
 @bot.event
 async def on_ready():
