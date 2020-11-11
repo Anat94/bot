@@ -23,6 +23,7 @@ async def on_ready():
     changeStatus.start()
     print ("Bot is ready")
 
+
 @bot.event
 async def on_member_join(member):
     embed = discord.Embed(
@@ -30,9 +31,6 @@ async def on_member_join(member):
         colour=discord.Colour.green()
     )
     await bot.get_channel(CHANNEL_BIENVENUE).send(embed=embed)
-
-
-
 
 
 @bot.command()
