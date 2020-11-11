@@ -33,7 +33,7 @@ async def on_member_join(member):
         title=f'{member.name} a rejoint le serveur !',
         colour=discord.Colour.green()
     )
-    await bot.get_channel(CHANNEL_BIENVENUE).send(embed=embed)
+    await bot.get_channel(json[729993948545679361]["channel_BIENVENUE_ID"]).send(embed=embed)
 
 
 @bot.command()
