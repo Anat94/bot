@@ -38,6 +38,9 @@ def has_perm_role(func):
 
         if role in roles:
             return await func(*args, **kwargs)
+        else:
+            await ctx.send("Vous n'avez pas les perms !")
+
     return wrapper
 
 @bot.event
