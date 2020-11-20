@@ -250,6 +250,15 @@ async def say(ctx, number, *texte):
 
 
 @bot.command()
+async def help_config(ctx):
+    embed = discord.Embed(
+        title=f"Descriptifs des commandes",
+        description=f"utilise !set_guil pour ajouter le serveur a la base de donéé\nutilise !role_perm pour que seul les membres ayant ce roles puisse utiliser certaines commandes tels que le ban ou le kick\n!channel_bienvenu pour que le channel bienvenue soit ajouté a la bdd\nutilise !channel_log pour que le channel log soit ajouté",
+        colour=0x00FF00
+    )
+    await ctx.send(embed=embed)        
+        
+@bot.command()
 async def help(ctx):
     embed = discord.Embed(
         title=f"Descriptifs des commandes",
