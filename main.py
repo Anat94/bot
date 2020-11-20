@@ -397,7 +397,7 @@ async def set_guild(ctx):
         title=f"Le serveur a bien été ajouté a la base de donnée",
         colour=0x00FF00
     )
-await ctx.send(embed=embed)
+    await ctx.send(embed=embed)
 
 @bot.command()
 @has_perm_role
@@ -408,7 +408,7 @@ async def channel_bienvenue(ctx, channel):
         title=f"Le channel bienvenue a été ajouté a la base de donnée",
         colour=0x00FF00
     )
- await ctx.send(embed=embed)       
+    await ctx.send(embed=embed)       
 
 
 @commands.has_permissions(administrator=True)
@@ -420,7 +420,7 @@ async def role_perm(ctx, role):
         title=f"Très bien, maintenant, certaines commandes ne sont utilisables que par les utilisateurs ayant ce role",
         colour=0x00FF00
     )
-await ctx.send(embed=embed)    
+    await ctx.send(embed=embed)    
     
 
 
@@ -433,6 +433,6 @@ async def channel_log(ctx, channel):
         title=f"Le channel LOG a été ajouté a la base de donnée",
         colour=0x00FF00
     )
-await ctx.send(embed=embed)
+    await ctx.send(embed=embed)
 
 bot.run(TOKEN)
