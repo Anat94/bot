@@ -393,6 +393,10 @@ async def play(ctx, url):
 async def set_guild(ctx):
     cur.execute(f"INSERT INTO guilds(guild) VALUES({ctx.guild.id})")
     conn.commit()
+    embed = discord.Embed(
+        title=f"Le serveur a bien été ajouté a la base de donnée",
+        colour=0x00FF00
+    )
 
 
 @bot.command()
@@ -400,6 +404,11 @@ async def set_guild(ctx):
 async def channel_bienvenue(ctx, channel):
     cur.execute(f"UPDATE guilds SET chann_bienvenue = {channel} WHERE guild = {ctx.guild.id}")
     conn.commit()
+    embed = discord.Embed(
+        title=f"Le channel bienvenue a été ajouté a la base de donnée",
+        colour=0x00FF00
+    )
+        
 
 
 @commands.has_permissions(administrator=True)
@@ -407,6 +416,12 @@ async def channel_bienvenue(ctx, channel):
 async def role_perm(ctx, role):
     cur.execute(f"UPDATE guilds SET role_perm = {role} WHERE guild = {ctx.guild.id}")
     conn.commit()
+    embed = discord.Embed(
+        title=f"Très bien, maintenant, certaines commandes ne sont utilisables que par les utilisateurs ayant ce role",
+        colour=0x00FF00
+    )
+    
+    
 
 
 @bot.command()
@@ -414,6 +429,9 @@ async def role_perm(ctx, role):
 async def channel_log(ctx, channel):
     cur.execute(f"UPDATE guilds SET chann_log = {channel} WHERE guild = {ctx.guild.id}")
     conn.commit()
-
+    embed = discord.Embed(
+        title=f"Le channel LOG a été ajouté a la base de donnée",
+        colour=0x00FF00
+    )
 
 bot.run(TOKEN)
