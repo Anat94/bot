@@ -380,7 +380,7 @@ async def play(ctx, url):
         await ctx.send(f"Je lance : {video.url}")
         play_song(client, musics[ctx.guild], video)
 
-
+#-------------------------------------------------------------------------------CONFIG BDD/BOT------------------------------------------------------------------------------------
 @commands.has_permissions(administrator=True)
 @bot.command()
 async def set_guild(ctx):
