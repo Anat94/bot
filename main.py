@@ -40,6 +40,10 @@ def has_perm_role(func):
             return await func(*args, **kwargs)
     return wrapper
 
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("Vous n'avez pas les perms !")
 
 @bot.event
 async def on_ready():
