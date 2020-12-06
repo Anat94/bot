@@ -7,46 +7,59 @@ import random
 import os
 from functools import wraps
 
-
 TOKEN = os.environ["TOKEN"]
 PREFIX = '!'
 MESSAGE = 'Message à mettre ✅ 💯 🇨🇵 😉 😱 😍 ❌ 😜 🍀 '  # dans l'ordre :white_check_mark: :100:  :flag_mf:  :wink::scream::heart_eyes::x::stuck_out_tongue_winking_eye::four_leaf_clover:
-
 
 intents = discord.Intents.default()
 intents.members = True
 bot = commands.Bot(command_prefix=PREFIX, intents=intents, help_command=None)
 
 
-conn = sqlite3.connect("my_config.sq3")
-cur = conn.cursor()
-
-try:
-    cur.execute("CREATE TABLE guilds (guild INTEGER, chann_bienvenue INTEGER, chann_log INTEGER, role_perm INTEGER)")
-except sqlite3.OperationalError:
-    pass
-
-
 def has_perm_role(func):
     @wraps(func)
     async def wrapper(*args, **kwargs):
         ctx = args[0]
+        conn = sqlite3.connect("my_config.sq3")
+        cur = conn.cursor()
 
+        # on verifie la guild
+        cur.execute("SELECT guild FROM guilds")
+        len_temp = 0
+        for e in cur:
+            len_temp += 1
+
+        if len_temp == 0:
+            await ctx.send("Le serveur n'a pas été enregistré ! Faites la commande !set_guild pour enregistrer votre serveur !")
+            cur.close()
+            conn.close()
+            return None
+
+        # on verifie que le role existe
         cur.execute(f"SELECT role_perm FROM guilds WHERE guild = {ctx.guild.id}")
         role = cur.fetchone()[0]
+        cur.close()
+        conn.close()
+
+        if role == 000:
+            await ctx.send("Le rôle de permission n'a pas été créé ! Vous ne pouvez donc pas exécuter cette commande ! Faites la commande !role_perm ID pour le définir")
+            return None
+
         roles = [r.id for r in ctx.author.roles]
 
         if role in roles:
             return await func(*args, **kwargs)
         else:
-            await ctx.send("Vous n'avez pas les perms !")
+            await ctx.send("Vous n'avez pas le rôle requis pour exécuter cette commande !")
 
     return wrapper
+
 
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("Vous n'avez pas les perms !")
+        await ctx.send("Vous n'avez pas les permissions pour exécuter cette commande !")
+
 
 @bot.event
 async def on_ready():
@@ -54,11 +67,21 @@ async def on_ready():
     changeStatus.start()
     print("Bot is ready")
 
+    conn = sqlite3.connect("my_config.sq3")
+    cur = conn.cursor()
+    cur.execute("CREATE TABLE IF NOT EXISTS guilds (guild INTEGER, chann_bienvenue INTEGER, chann_log INTEGER, role_perm INTEGER)")
+    cur.close()
+    conn.close()
+
 
 @bot.event
 async def on_member_join(member):
+    conn = sqlite3.connect("my_config.sq3")
+    cur = conn.cursor()
     cur.execute(f"SELECT chann_bienvenue FROM guilds WHERE guild = {member.guild.id}")
     channel = cur.fetchone()[0]
+    cur.close()
+    conn.close()
 
     try:
         embed = discord.Embed(
@@ -256,8 +279,9 @@ async def help_config(ctx):
         description=f"utilise !set_guil pour ajouter le serveur a la base de donéé\nutilise !role_perm pour que seul les membres ayant ce roles puisse utiliser certaines commandes tels que le ban ou le kick\n!channel_bienvenu pour que le channel bienvenue soit ajouté a la bdd\nutilise !channel_log pour que le channel log soit ajouté",
         colour=0x00FF00
     )
-    await ctx.send(embed=embed)        
-        
+    await ctx.send(embed=embed)
+
+
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(
@@ -279,8 +303,12 @@ async def help(ctx):
 # ------------------------------------------------------------------------------------LOG-----------------------------------------------------------------------------------------------
 @bot.event
 async def on_message_delete(message):
+    conn = sqlite3.connect("my_config.sq3")
+    cur = conn.cursor()
     cur.execute(f"SELECT chann_log FROM guilds WHERE guild = {message.guild.id}")
     channel = cur.fetchone()[0]
+    cur.close()
+    conn.close()
 
     try:
         channel = int(channel)
@@ -396,52 +424,76 @@ async def play(ctx, url):
         await ctx.send(f"Je lance : {video.url}")
         play_song(client, musics[ctx.guild], video)
 
-#-------------------------------------------------------------------------------CONFIG BDD/BOT------------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------CONFIG BDD/BOT------------------------------------------------------------------------------------
 @commands.has_permissions(administrator=True)
 @bot.command()
 async def set_guild(ctx):
+    conn = sqlite3.connect("my_config.sq3")
+    cur = conn.cursor()
     cur.execute(f"INSERT INTO guilds(guild) VALUES({ctx.guild.id})")
+    cur.execute(f"UPDATE guilds SET role_perm = 000 WHERE guild = {ctx.guild.id}")
     conn.commit()
+    cur.close()
+    conn.close()
+
     embed = discord.Embed(
         title=f"Le serveur a bien été ajouté a la base de donnée",
         colour=0x00FF00
     )
     await ctx.send(embed=embed)
 
+
 @bot.command()
 @has_perm_role
 async def channel_bienvenue(ctx, channel):
+    conn = sqlite3.connect("my_config.sq3")
+    cur = conn.cursor()
+
     cur.execute(f"UPDATE guilds SET chann_bienvenue = {channel} WHERE guild = {ctx.guild.id}")
     conn.commit()
+    cur.close()
+    conn.close()
+
     embed = discord.Embed(
         title=f"Le channel bienvenue a été ajouté a la base de donnée",
         colour=0x00FF00
     )
-    await ctx.send(embed=embed)       
+    await ctx.send(embed=embed)
 
 
 @commands.has_permissions(administrator=True)
 @bot.command()
 async def role_perm(ctx, role):
+    conn = sqlite3.connect("my_config.sq3")
+    cur = conn.cursor()
     cur.execute(f"UPDATE guilds SET role_perm = {role} WHERE guild = {ctx.guild.id}")
     conn.commit()
+    cur.close()
+    conn.close()
+
     embed = discord.Embed(
         title=f"Très bien, maintenant, certaines commandes ne sont utilisables que par les utilisateurs ayant ce role",
         colour=0x00FF00
     )
-    await ctx.send(embed=embed)    
-    
+    await ctx.send(embed=embed)
 
 
 @bot.command()
 @has_perm_role
 async def channel_log(ctx, channel):
+    conn = sqlite3.connect("my_config.sq3")
+    cur = conn.cursor()
     cur.execute(f"UPDATE guilds SET chann_log = {channel} WHERE guild = {ctx.guild.id}")
     conn.commit()
+    cur.close()
+    conn.close()
+
     embed = discord.Embed(
         title=f"Le channel LOG a été ajouté a la base de donnée",
         colour=0x00FF00
     )
     await ctx.send(embed=embed)
+
 
 bot.run(TOKEN)
