@@ -30,7 +30,7 @@ def has_perm_role(func):
             len_temp += 1
 
         if len_temp == 0:
-            await ctx.send("Le serveur n'a pas été enregistré ! Faites la commande !set_guild pour enregistrer votre serveur !")
+            await ctx.send("Le serveur n'a pas été enregistré ! Faites la commande $set_guild pour enregistrer votre serveur !")
             cur.close()
             conn.close()
             return None
@@ -42,7 +42,7 @@ def has_perm_role(func):
         conn.close()
 
         if role == 000:
-            await ctx.send("Le rôle de permission n'a pas été créé ! Vous ne pouvez donc pas exécuter cette commande ! Faites la commande !role_perm ID pour le définir")
+            await ctx.send("Le rôle de permission n'a pas été créé ! Vous ne pouvez donc pas exécuter cette commande ! Faites la commande $role_perm ID pour le définir")
             return None
 
         roles = [r.id for r in ctx.author.roles]
