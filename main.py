@@ -276,7 +276,15 @@ async def say(ctx, number, *texte):
 async def help_config(ctx):
     embed = discord.Embed(
         title=f"Descriptifs des commandes",
-        description=f"utilise !set_guil pour ajouter le serveur a la base de donéé\nutilise !role_perm pour que seul les membres ayant ce roles puisse utiliser certaines commandes tels que le ban ou le kick\n!channel_bienvenu pour que le channel bienvenue soit ajouté a la bdd\nutilise !channel_log pour que le channel log soit ajouté",
+        description=f"Utilise $set_guil pour ajouter le serveur a la base de donéé\nUtilise $role_perm pour que seul les membres ayant ce roles puisse utiliser certaines commandes tels que le ban ou le kick\nUtilise $channel_bienvenue pour que le channel bienvenue soit ajouté a la bdd\nUtilise $channel_log pour que le channel log soit ajouté",
+        colour=0x00FF00
+    )
+    await ctx.send(embed=embed)
+@bot.command()
+async def help_music(ctx):
+    embed = discord.Embed(
+        title=f"Descriptifs des commandes",
+        description=f"Utilise $play afin de jouer une vidéo dans un channel \nUtilise $leave pour que le bot quitte le channel \n$pause pour mettre en pause et $resume pour relancer la musique \nUtilise $skip pour pour passer a la musique suivante",
         colour=0x00FF00
     )
     await ctx.send(embed=embed)
