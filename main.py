@@ -8,7 +8,7 @@ import os
 from functools import wraps
 
 TOKEN = os.environ["TOKEN"]
-PREFIX = '!'
+PREFIX = '$'
 MESSAGE = 'Message à mettre ✅ 💯 🇨🇵 😉 😱 😍 ❌ 😜 🍀 '  # dans l'ordre :white_check_mark: :100:  :flag_mf:  :wink::scream::heart_eyes::x::stuck_out_tongue_winking_eye::four_leaf_clover:
 
 intents = discord.Intents.default()
@@ -337,7 +337,7 @@ async def on_reaction_add(reaction, user):
 
 
 # ------------------------------------------------------------------------------------STATUS-----------------------------------------------------------------------------------------------
-status = ["!help",
+status = ["$help",
           " A proxima roleplay",
           "A votre service"]
 
