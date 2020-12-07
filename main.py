@@ -101,21 +101,6 @@ async def send_mp(ctx):
     for member in all_members:
         if not member.bot and member.id != 433547967140462592:
             await member.send(MESSAGE)
-#---aa-->            
-@client.event
-async def on_ready():
-    Channel = client.get_channel(774729301727772706)
-    Text= "YOUR_MESSAGE_HERE"
-    Moji = await client.send_message(Channel, Text)
-    await client.add_reaction(Moji, emoji='🏃')
-@client.event
-async def on_reaction_add(reaction, user):
-    Channel = client.get_channel('YOUR_CHANNEL_ID')
-    if reaction.message.channel.id != Channel
-    return
-    if reaction.emoji == "🏃":
-      Role = discord.utils.get(user.server.roles, name="membres")
-      await client.add_roles(user, Role)
 
 
 
@@ -417,9 +402,7 @@ async def skip(ctx):
 
 
 def play_song(client, queue, song):
-    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(song.stream_url
-                                                                 ,
-                                                                 before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5"))
+    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(song.stream_url,before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5"))
 
     def next(_):
         if len(queue) > 0:
