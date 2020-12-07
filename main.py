@@ -101,6 +101,22 @@ async def send_mp(ctx):
     for member in all_members:
         if not member.bot and member.id != 433547967140462592:
             await member.send(MESSAGE)
+#---aa-->            
+@client.event
+async def on_ready():
+    Channel = client.get_channel('774729301727772706')
+    Text= "YOUR_MESSAGE_HERE"
+    Moji = await client.send_message(Channel, Text)
+    await client.add_reaction(Moji, emoji='🏃')
+@client.event
+async def on_reaction_add(reaction, user):
+    Channel = client.get_channel('YOUR_CHANNEL_ID')
+    if reaction.message.channel.id != Channel
+    return
+    if reaction.emoji == "🏃":
+      Role = discord.utils.get(user.server.roles, name="membres")
+      await client.add_roles(user, Role)
+
 
 
 @bot.command()
