@@ -104,7 +104,7 @@ async def send_mp(ctx):
 #---aa-->            
 @client.event
 async def on_ready():
-    Channel = client.get_channel(774729301727772706")
+    Channel = client.get_channel(774729301727772706)
     Text= "YOUR_MESSAGE_HERE"
     Moji = await client.send_message(Channel, Text)
     await client.add_reaction(Moji, emoji='🏃')
