@@ -8,7 +8,7 @@ import os
 from functools import wraps
 
 TOKEN = os.environ["TOKEN"]
-PREFIX = '$'
+PREFIX = '!'
 MESSAGE = 'Message à mettre ✅ 💯 🇨🇵 😉 😱 😍 ❌ 😜 🍀 '  # dans l'ordre :white_check_mark: :100:  :flag_mf:  :wink::scream::heart_eyes::x::stuck_out_tongue_winking_eye::four_leaf_clover:
 
 intents = discord.Intents.default()
@@ -30,7 +30,7 @@ def has_perm_role(func):
             len_temp += 1
 
         if len_temp == 0:
-            await ctx.send("Le serveur n'a pas été enregistré ! Faites la commande $set_guild pour enregistrer votre serveur !")
+            await ctx.send("Le serveur n'a pas été enregistré ! Faites la commande !set_guild pour enregistrer votre serveur !")
             cur.close()
             conn.close()
             return None
@@ -42,7 +42,7 @@ def has_perm_role(func):
         conn.close()
 
         if role == 000:
-            await ctx.send("Le rôle de permission n'a pas été créé ! Vous ne pouvez donc pas exécuter cette commande ! Faites la commande $role_perm ID pour le définir")
+            await ctx.send("Le rôle de permission n'a pas été créé ! Vous ne pouvez donc pas exécuter cette commande ! Faites la commande !role_perm ID pour le définir")
             return None
 
         roles = [r.id for r in ctx.author.roles]
@@ -101,7 +101,6 @@ async def send_mp(ctx):
     for member in all_members:
         if not member.bot and member.id != 433547967140462592:
             await member.send(MESSAGE)
-
 
 
 @bot.command()
@@ -277,15 +276,7 @@ async def say(ctx, number, *texte):
 async def help_config(ctx):
     embed = discord.Embed(
         title=f"Descriptifs des commandes",
-        description=f"Utilise $set_guil pour ajouter le serveur a la base de donéé\nUtilise $role_perm pour que seul les membres ayant ce roles puisse utiliser certaines commandes tels que le ban ou le kick\nUtilise $channel_bienvenue pour que le channel bienvenue soit ajouté a la bdd\nUtilise $channel_log pour que le channel log soit ajouté",
-        colour=0x00FF00
-    )
-    await ctx.send(embed=embed)
-@bot.command()
-async def help_music(ctx):
-    embed = discord.Embed(
-        title=f"Descriptifs des commandes",
-        description=f"Utilise $play afin de jouer une vidéo dans un channel \nUtilise $leave pour que le bot quitte le channel \n$pause pour mettre en pause et $resume pour relancer la musique \nUtilise $skip pour pour passer a la musique suivante",
+        description=f"utilise !set_guil pour ajouter le serveur a la base de donéé\nutilise !role_perm pour que seul les membres ayant ce roles puisse utiliser certaines commandes tels que le ban ou le kick\n!channel_bienvenu pour que le channel bienvenue soit ajouté a la bdd\nutilise !channel_log pour que le channel log soit ajouté",
         colour=0x00FF00
     )
     await ctx.send(embed=embed)
@@ -346,7 +337,7 @@ async def on_reaction_add(reaction, user):
 
 
 # ------------------------------------------------------------------------------------STATUS-----------------------------------------------------------------------------------------------
-status = ["$help",
+status = ["!help",
           " A proxima roleplay",
           "A votre service"]
 
@@ -402,7 +393,9 @@ async def skip(ctx):
 
 
 def play_song(client, queue, song):
-    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(song.stream_url,before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5"))
+    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(song.stream_url
+                                                                 ,
+                                                                 before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5"))
 
     def next(_):
         if len(queue) > 0:
