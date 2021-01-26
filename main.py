@@ -8,7 +8,7 @@ import os
 from functools import wraps
 
 TOKEN = os.environ["TOKEN"]
-PREFIX = '@'
+PREFIX = '-'
 MESSAGE = 'Message à mettre ✅ 💯 🇨🇵 😉 😱 😍 ❌ 😜 🍀 '  # dans l'ordre :white_check_mark: :100:  :flag_mf:  :wink::scream::heart_eyes::x::stuck_out_tongue_winking_eye::four_leaf_clover:
 
 intents = discord.Intents.default()
@@ -42,7 +42,7 @@ def has_perm_role(func):
         conn.close()
 
         if role == 000:
-            await ctx.send("Le rôle de permission n'a pas été créé ! Vous ne pouvez donc pas exécuter cette commande ! Faites la commande !role_perm ID pour le définir")
+            await ctx.send("Le rôle de permission n'a pas été créé ! Vous ne pouvez donc pas exécuter cette commande ! Faites la commande -role_perm ID pour le définir")
             return None
 
         roles = [r.id for r in ctx.author.roles]
@@ -181,11 +181,11 @@ async def banId(ctx):
 
 
 async def createMutedRole(ctx):
-    mutedRole = await ctx.guild.create_role(name="Muted",
+    mutedRole = await ctx.guild.create_role(name="Muted-UYScuti",
                                             permissions=discord.Permissions(
                                                 send_messages=False,
                                                 speak=False),
-                                            reason="Creation du role Muted pour mute des gens.")
+                                            reason="Creation du role Muted-UYScuti pour mute des gens.")
     for channel in ctx.guild.channels:
         await channel.set_permissions(mutedRole, send_messages=False, speak=False)
     return mutedRole
@@ -194,7 +194,7 @@ async def createMutedRole(ctx):
 async def getMutedRole(ctx):
     roles = ctx.guild.roles
     for role in roles:
-        if role.name == "Muted":
+        if role.name == "Muted-UYScuti":
             return role
 
     return await createMutedRole(ctx)
@@ -337,7 +337,7 @@ async def on_reaction_add(reaction, user):
 
 
 # ------------------------------------------------------------------------------------STATUS-----------------------------------------------------------------------------------------------
-status = ["!help",
+status = ["-help",
           " A proxima roleplay",
           "A votre service"]
 
