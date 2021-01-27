@@ -97,6 +97,7 @@ async def on_member_join(member):
 
 @bot.command()
 async def send_mp(ctx):
+    await ctx.message.delete()
     all_members = ctx.guild.members
     for member in all_members:
         if not member.bot and member.id != 433547967140462592:
@@ -268,6 +269,7 @@ async def Tirage_au_sort(ctx):
 @bot.command()
 @has_perm_role
 async def say(ctx, number, *texte):
+    await ctx.message.delete()
     for i in range(int(number)):
         await ctx.send(" ".join(texte))
 
